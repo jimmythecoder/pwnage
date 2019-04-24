@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Pwned</title>
+
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <fieldset>
+            <legend>Password check form</legend>
+            <form name="pwned" onsubmit="app.submit();return false;">
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required/>
+                </div>
+                <div class="input-group">
+                    <button type="submit">Check</button>
+                </div>
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Results</legend>
+            <p>
+                <label>SHA-1 Hash</label>
+                <span id="hash"></span>
+            </p>
+            <p>
+                <label>Matches</label>
+                <ul id="matches">
+
+                </ul>
+            </p>
+            <p>
+                <label>Exact match?</label>
+                <span id="exact-match"></span>
+            </p>
+        </fieldset>
+    </div>
+</body>
+</html>
