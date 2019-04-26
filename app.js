@@ -37,7 +37,7 @@ class AppController {
     renderResults(sha1Hash, match, results) {
 
         document.getElementById('hash').innerText           = sha1Hash;
-        document.getElementById('matches').innerText        = results.length;console.log(match);
+        document.getElementById('matches').innerText        = results.length;
         document.getElementById('exact-match').innerText    = match ? `Yes (${match.occurances} times):  ${sha1Hash.substr(0,5)} + ${match.hash}` : 'No';
     }
 
