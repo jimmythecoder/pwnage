@@ -7,38 +7,61 @@
     <title>Password Pwned</title>
 
     <script src="app.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <style>
+        body {
+            margin: 30px 10px;
+        }
+
+        legend {
+            background: white;
+        }
+
+        fieldset {
+            
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <fieldset>
-            <legend>Password check form</legend>
+        <fieldset class="box">
+            <legend class="subtitle is-5">Verify your password</legend>
             <form name="pwned" onsubmit="app.submit();return false;">
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" required/>
+                <div class="field">
+                    <label for="password" class="label">Password</label>
+                    <div class="control">
+                        <input type="password" class="input" name="password" id="password" required/>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <button type="submit">Check</button>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Check</button>
+                    </div>
                 </div>
             </form>
         </fieldset>
 
-        <fieldset>
-            <legend>Results</legend>
-            <p>
-                <label>SHA-1 Hash</label>
-                <span id="hash"></span>
-            </p>
-            <p>
-                <label>Matches</label>
-                <ul id="matches">
+        <fieldset class="box">
+            <legend class="subtitle is-5">Security check results</legend>
 
-                </ul>
-            </p>
-            <p>
-                <label>Exact match?</label>
-                <span id="exact-match"></span>
-            </p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>SHA-1</th>
+                        <td><span id="hash"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Partial matches</th>
+                        <td><span id="matches"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Exploited?</th>
+                        <td><span id="exact-match"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </fieldset>
     </div>
 </body>

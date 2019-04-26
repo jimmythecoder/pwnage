@@ -7,9 +7,9 @@ class AppController {
         let sha1Hash    = await this.hashPassword(password);
         let results     = await this.getPwnedPasswordHashes(sha1Hash);
         let hashes      = this.toJSON(results);
-        let isPwned     = this.hasMatch(sha1Hash, hashes);
+        let match       = this.getMatch(sha1Hash, hashes); 
 
-        this.renderResults(sha1Hash, isPwned, hashes);
+        this.renderResults(sha1Hash, match, hashes);
     }
 
     async getPwnedPasswordHashes(sha1Hash) {
@@ -23,24 +23,24 @@ class AppController {
         const encoder   = new TextEncoder();
         const data      = encoder.encode(password);
 
-        return window.crypto.subtle.digest('SHA-1', data).then((digest) => this.hexString(digest));
+        return window.crypto.subtle.digest('SHA-1', data).then((digest) => this.hexString(digest).toUpperCase());
     }
 
-    hasMatch(hash, hashes) {
-        return hashes.find((item) => item.hash.localeCompare(hash));
+    getMatch(hash, hashes) {
+        return hashes.find((item) => item.hash == hash.substring(5));
     }
 
-    renderResults(sha1Hash, isPwned, results) {
+    renderResults(sha1Hash, match, results) {
 
         document.getElementById('hash').innerText           = sha1Hash;
-        document.getElementById('matches').innerText        = results.length;
-        document.getElementById('exact-match').innerText    = isPwned ? 'Yes' : 'No';
+        document.getElementById('matches').innerText        = results.length;console.log(match);
+        document.getElementById('exact-match').innerText    = match ? `Yes (${match.occurances} times):  ${sha1Hash.substr(0,5)} + ${match.hash}` : 'No';
     }
 
     toJSON(data) {
         return data.split('\n').map((line) => {
             let [hash, occurances] = line.split(':');
-            return {hash, occurances};
+            return {hash, occurances: parseInt(occurances)};
         });
     }
 
