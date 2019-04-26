@@ -25,8 +25,16 @@
 </head>
 <body>
     <div class="container">
+
+        <h1 class="title">Compromised password check tool</h1>
+
+        <p>Check your password security against a known comprimised password database.</p>
+        <p>Uses haveibeenpwned API to securely check your password in SHA-1 hashed form with https://en.wikipedia.org/wiki/K-anonymity</p>
+        <p>Read more at <a href="https://haveibeenpwned.com/">';--have i been pwned?</a></p>
+
+        <br />
         <fieldset class="box">
-            <legend class="subtitle is-5">Verify your password</legend>
+            <legend class="heading is-5">Verify your password</legend>
             <form name="pwned" onsubmit="app.submit();return false;">
                 <div class="field">
                     <label for="password" class="label">Password</label>
@@ -43,7 +51,7 @@
         </fieldset>
 
         <fieldset class="box">
-            <legend class="subtitle is-5">Security check results</legend>
+            <legend class="heading is-5">Security check results</legend>
 
             <table class="table">
                 <tbody>

@@ -1,3 +1,7 @@
+/**
+ * Reference design for https://haveibeenpwned.com/API/v2#PwnedPasswords 
+ */
+
 const API_ENDPOINT = (hash) => `https://api.pwnedpasswords.com/range/${hash.substring(0,5)}`;
 
 class AppController {
